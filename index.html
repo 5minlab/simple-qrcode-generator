@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>오프라인 QR 생성기</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h2>로컬 QR 코드 생성기</h2>
+    <textarea rows="10" cols="60" id="text" placeholder="내용을 입력하세요"></textarea>
+    <div id="qrcode" style="margin-top:20px; margin-bottom:100px;"></div>
+
+    <script>       
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 768,
+            height: 768,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+        document.getElementById("text").oninput = function(e) {
+            qrcode.makeCode(e.target.value);
+        };
+    </script>
+</body>
+</html>
